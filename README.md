@@ -1,12 +1,14 @@
-# Ethereum dapps tutorial by creating token & its website
+# Ethereum web wallet
 
-## Getting Started
+## Install
+
+### Install MetaMask
+
+<https://metamask.io/>
 
 ### Install NodeJS
 
-Don't you have Node JS installed? First install it.
-
-On Ubuntu or OS X
+#### On Ubuntu
 
 ```bash
 sudo apt-get install -y nodejs
@@ -17,6 +19,16 @@ sudo apt-get purge -y nodejs
 node -v && npm -v
 ```
 
+#### On OSX
+
+```bash
+brew install nodejs
+sudo npm install n -g
+sudo n 11.8.0 # Current stable
+brew uninstall nodejs
+node -v && npm -v
+```
+
 The output will be like:
 
 ```bash
@@ -24,11 +36,11 @@ v11.8.0
 6.5.0
 ```
 
-### Install Token-Dapps-Tutorial
+### Install Ethereum-web-wallet
 
 ``` bash
-git clone https://github.com/shunsukehondo/token-dapps-tutorial.git
-cd token-dapps-tutorial
+git clone https://github.com/shunsukehondo/ethereum-web-wallet.git
+cd ethereum-web-wallet
 npm install
 npm start
 ```

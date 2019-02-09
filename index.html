@@ -1,13 +1,75 @@
-<!DOCTYPE html>
+<!doctype>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Shun Coin Exchange</title>
+    <script src="https://unpkg.com/vue@2.6.4"></script>
   </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<body>
+
+<div id="app">
+  <h1>
+    {{ name }}
+  </h1>
+  <h2>
+    Total supply: {{ totalSupply }} {{ symbol }}
+  </h2>
+  <h2>
+    Your balance: {{ balance }} {{ symbol }}
+  </h2>
+  <h2>
+    Send tokens
+  </h2>
+  <form v-on:submit.prevent="onTransferToken">
+    <label for="recipient">Recipient address</label>
+    <input id="recipient" placeholder="0x00" type="text" />
+    <label for="amount">Amount</label>
+    <input id="amount" placeholder="1" type="number" />
+    <input type="submit" value="Send">
+  </form>
+  <ol>
+    <li v-for="tx in transactions" v-bind:key="tx"><a href="">{{ tx }}</a></li>
+  </ol>
+</div>
+
+<script>
+
+/*
+const info = {
+  address: "0x2f31aacec9e1a83cbd6d6ca2d751230ed08e6f93",
+  abi: [ { "constant": false, "inputs": [ { "name": "spender", "type": "address" }, { "name": "value", "type": "uint256" } ], "name": "approve", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "spender", "type": "address" }, { "name": "subtractedValue", "type": "uint256" } ], "name": "decreaseAllowance", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "spender", "type": "address" }, { "name": "addedValue", "type": "uint256" } ], "name": "increaseAllowance", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "value", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "value", "type": "uint256" } ], "name": "transferFrom", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "from", "type": "address" }, { "indexed": true, "name": "to", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "owner", "type": "address" }, { "indexed": true, "name": "spender", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" } ], "name": "Approval", "type": "event" }, { "constant": true, "inputs": [ { "name": "owner", "type": "address" }, { "name": "spender", "type": "address" } ], "name": "allowance", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "owner", "type": "address" } ], "name": "balanceOf", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "initialSupply", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" } ]
+
+};
+*/
+
+let account;
+let contract;
+
+window.addEventListener("load", () => {
+  alert(window.web3);
+  window.web3.eth.getAccounts((err, result) => {
+		account = result[0];
+    alert(account);
+	});
+});
+
+new Vue ({
+  el: "#app",
+  data: {
+    title: 'Token Viewer',
+    name: 'My token',
+    symbol: 'TKN',
+    totalSupply: '10000.000000000000000000',
+    address: '0x00000000000000000000',
+    balance: '0.0',
+    transactions: ["0xaaa"]
+  },
+  computed: {
+  },
+  methods: {
+  },
+  mounted: function () {
+  }
+});
+</script>
+
+</body>
 </html>
